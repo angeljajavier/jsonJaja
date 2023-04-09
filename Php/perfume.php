@@ -43,7 +43,8 @@ $perfumes = array(
         "image" => "https://i.pinimg.com/564x/49/da/55/49da556a2bdf93cd4392998cb619e1e0.jpg"
     ),
 );
-
+//ALLOW ACCESS TO PHP CONNECTION
+header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json");
 echo json_encode(array("perfumes" => $perfumes));
 
