@@ -33,6 +33,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="perf.css">
     <script>
       // Get the button and weapons list elements from the document
       const fetchBtn = document.getElementById('fetchBtn');
@@ -42,29 +43,38 @@
       // Add a click to the fetch button
       fetchBtn.addEventListener('click', () => {
      
-        // Send a GET request to the weapons.php
-        fetch('perfume.php')
+      
+        fetch('http://jsonjaja.test/perfume.php')
           .then(response => response.json())
           .then(data => {
             catalog.innerHTML = '';
             data.perfumes.forEach(perfumes => {
                 catalog.innerHTML += `
-                <div class="card sm-3">
-                  <div class="row">
-                    <div class="row-cols-5">
-                      <img src="${perfumes.image}" alt="${perfumes.name}" class="img-fluid rounded-start">
-                    </div>
-                    <div class="row-cols-5">
-                      <div class="card-body">
-                        <h5 class="card-title">${perfumes.name}</h5>
-                        <p class="card-text"><strong>Brand:</strong> ${perfumes.brand}</p>
-                        <p class="card-text"><strong>Notes:</strong> ${perfumes.notes}</p>
-                        <p class="card-text"><strong>Fragrance Concentration:</strong> ${perfumes.fragranceconc}</p>
-                        <p class="card-text"><strong>Size:</strong> ${perfumes.size}</p>
+                <div class="product-card">
+                  <div class="badge">Hot</div>
+                  <div class="product-tumb">
+                    <img src="${perfumes.image}" alt="">
+                  </div>
+                  <div class="product-details">
+                    <span class="product-catagory">${perfumes.brand}</span>
+                    <h4><a href="">${perfumes.name}</a></h4>
+                    <p><i>${perfumes.notes}</i></p>
+                    <p>Fragrance Concentration: ${perfumes.fragranceconc}</p>
+                    <p>Size: ${perfumes.size}</p>
+
+                    <div class="product-bottom-details">
+                      <div class="product-price"><small>$150.00</small>$99.99</div>
+                      <div class="product-links">
+                        <a href=""><i class="fa fa-heart"></i></a>
+                        <a href=""><i class="fa fa-shopping-cart"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>
+
+      
+
+                
                 
               `;
             });
